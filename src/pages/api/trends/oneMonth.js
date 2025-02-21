@@ -12,12 +12,13 @@ export default async function handler(req, res) {
       return;
     }
 
-    const oneMonthAgo = new Date();
-    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1); // 1개월 전
+    const daysAgo = parseInt(req.query.daysAgo) || 15;
+    const customDate = new Date();
+    customDate.setDate(customDate.getDate() - daysAgo);
 
     const result = await googleTrends.interestOverTime({
       keyword: ['메가공무원', '공단기', '해커스공무원'],
-      startTime: oneMonthAgo,
+      startTime: customDate,
       geo: 'KR',
     });
 
