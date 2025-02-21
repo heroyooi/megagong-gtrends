@@ -12,9 +12,9 @@ export default async function handler(req, res) {
       return;
     }
 
-    const daysAgo = parseInt(req.query.daysAgo) || 14; // 1~14까지 가능
+    const dayQ = parseInt(req.query.q) || 14; // 1~14까지 가능
     const customDate = new Date();
-    customDate.setDate(customDate.getDate() - daysAgo);
+    customDate.setDate(customDate.getDate() - dayQ);
 
     const result = await googleTrends.interestOverTime({
       keyword: ['메가공무원', '공단기', '해커스공무원'],
