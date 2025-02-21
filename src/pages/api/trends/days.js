@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       return;
     }
 
-    const daysAgo = parseInt(req.query.daysAgo) || 15;
+    const daysAgo = parseInt(req.query.daysAgo) || 14; // 1~14까지 가능
     const customDate = new Date();
     customDate.setDate(customDate.getDate() - daysAgo);
 
