@@ -14,9 +14,11 @@ export default async function handler(req, res) {
       return res.status(405).json({ message: "Method Not Allowed" });
     }
 
+    const dayQ = parseInt(req.query.q) || 14;
+
     const today = new Date();
     const startDate = new Date();
-    startDate.setDate(today.getDate() - 14); // 최근 14일 데이터 가져오기
+    startDate.setDate(today.getDate() - dayQ); // 최근 14일 데이터 가져오기
 
     const formatDate = (date) => date.toISOString().split("T")[0]; // YYYY-MM-DD 형식 변환
 
