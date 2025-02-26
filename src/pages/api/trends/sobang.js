@@ -23,6 +23,22 @@ export default async function handler(req, res) {
     });
 
     const data = JSON.parse(result);
+
+    if (data.default && data.default.timelineData) {
+      data.default.timelineData = data.default.timelineData.map((entry) => {
+        const values = entry.value;
+        const sumValue = values[1] + values[2];
+        return {
+          ...entry,
+          value: [...values, sumValue],
+        };
+      });
+
+      data.default.averages.push(
+        data.default.averages[1] + data.default.averages[2]
+      );
+    }
+
     res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch trends data' });
