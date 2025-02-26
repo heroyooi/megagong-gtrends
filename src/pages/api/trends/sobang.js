@@ -17,28 +17,12 @@ export default async function handler(req, res) {
     customDate.setDate(customDate.getDate() - dayQ);
 
     const result = await googleTrends.interestOverTime({
-      keyword: ['메가소방', '소방단기', '소단기', '해커스소방'],
+      keyword: ['메가소방', '소방단기 + 소단기', '해커스소방'],
       startTime: customDate,
       geo: 'KR',
     });
 
     const data = JSON.parse(result);
-
-    if (data.default && data.default.timelineData) {
-      data.default.timelineData = data.default.timelineData.map((entry) => {
-        const values = entry.value;
-        const sumValue = values[1] + values[2];
-        return {
-          ...entry,
-          value: [...values, sumValue],
-        };
-      });
-
-      data.default.averages.push(
-        data.default.averages[1] + data.default.averages[2]
-      );
-    }
-
     res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch trends data' });
