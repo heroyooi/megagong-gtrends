@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       endDate: formatDate(today),
       timeUnit: "date", // ✅ "date"로 수정
       keywordGroups: [
-        { groupName: "메가공무원", keywords: ["메가공무원"] },
+        { groupName: "넥스트공무원", keywords: ["넥스트공무원"] },
         { groupName: "공단기", keywords: ["공단기"] },
         { groupName: "해커스공무원", keywords: ["해커스공무원"] },
       ],

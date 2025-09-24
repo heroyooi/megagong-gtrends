@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       endDate: formatDate(today),
       timeUnit: "date", // ✅ "date"로 수정
       keywordGroups: [
-        { groupName: "메가소방", keywords: ["메가소방"] },
+        { groupName: "넥스트소방", keywords: ["넥스트소방"] },
         { groupName: "소방단기", keywords: ["소방단기", "소단기"] },
         { groupName: "해커스소방", keywords: ["해커스소방"] },
       ],
