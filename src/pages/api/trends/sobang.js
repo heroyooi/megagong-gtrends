@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     customDate.setDate(customDate.getDate() - dayQ);
 
     const result = await googleTrends.interestOverTime({
-      keyword: ['넥스트소방', '소방단기 + 소단기', '해커스소방'],
+      keyword: ['넥스트소방 + 메가소방', '소방단기 + 소단기', '해커스소방'],
       startTime: customDate,
       geo: 'KR',
     });

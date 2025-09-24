@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     customDate.setDate(customDate.getDate() - dayQ);
 
     const result = await googleTrends.interestOverTime({
-      keyword: ['넥스트공무원', '공단기', '해커스공무원'],
+      keyword: ['넥스트공무원 + 메가공무원', '공단기', '해커스공무원'],
       startTime: customDate,
       geo: 'KR',
     });
